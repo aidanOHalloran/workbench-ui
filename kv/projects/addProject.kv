@@ -1,0 +1,43 @@
+<CustomSpinnerOption@SpinnerOption>:
+    font_size: 45
+
+<AddProjectScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+
+        Label:
+            text: "Add New Project"
+            font_size: 60
+
+        Spinner:
+            id: category_spinner
+            text: "Select Category"
+            values: ["current", "planned", "past"]
+            font_size: 45
+            option_cls: 'CustomSpinnerOption'  # This affects the dropdown items
+
+        TouchInput:
+            id: title_input
+            hint_text: "Enter Project Title"
+            multiline: False
+            font_size: 45
+
+        TouchInput:
+            id: description_input
+            hint_text: "Enter Project Description"
+            multiline: True
+            font_size: 45
+
+        Button:
+            text: "Add Project"
+            font_size: 45
+            on_release:
+                app.AddProject(title_input.text, description_input.text, category_spinner.text)
+
+        Button:
+            text: "Back"
+            font_size: 40
+            on_release:
+                app.root.current = 'projects'

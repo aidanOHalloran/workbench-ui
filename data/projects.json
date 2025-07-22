@@ -19,6 +19,22 @@
     {
       "title": "Robo-Bartender",
       "description": "Built an automatic bar machine for Sigma Nu house."
+    },
+    {
+      "title": "test",
+      "description": "test"
+    },
+    {
+      "title": "test2",
+      "description": "test2"
+    },
+    {
+      "title": "test3",
+      "description": "test3\\\n"
+    },
+    {
+      "title": "past",
+      "description": "past\n"
     }
   ]
 }
