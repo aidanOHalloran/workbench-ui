@@ -1,0 +1,24 @@
+{
+  "current": [
+    {
+      "title": "Workbench Touchscreen System",
+      "description": "Build out this Kivy-based touchscreen info panel for my workbench."
+    },
+    {
+      "title": "Garage Pulley System",
+      "description": "Install ceiling mounted pulley system."
+    }
+  ],
+  "planned": [
+    {
+      "title": "Tool Inventory Tracker",
+      "description": "App to log and locate all hand and power tools."
+    }
+  ],
+  "past": [
+    {
+      "title": "Robo-Bartender",
+      "description": "Built an automatic bar machine for Sigma Nu house."
+    }
+  ]
+}
