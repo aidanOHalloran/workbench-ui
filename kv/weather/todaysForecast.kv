@@ -1,0 +1,28 @@
+<TodaysForecastScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 30
+        spacing: 20
+
+        Label:
+            text: root.location_label
+            font_size: 50
+            size_hint_y: None
+            height: self.texture_size[1] + 20
+
+        ScrollView:
+            GridLayout:
+                id: hourly_forecast_container
+                cols: 1
+                spacing: 20
+                padding: [10, 10]
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: 60
+            font_size: 40
+            on_release:
+                app.root.current = 'weatherMenu'
