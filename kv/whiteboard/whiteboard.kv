@@ -1,0 +1,61 @@
+<WhiteboardScreen>:
+    name: "whiteboard"
+    BoxLayout:
+        orientation: 'vertical'
+
+        CanvasWidget:
+            id: canvasWidget
+
+        BoxLayout:  # Color buttons row
+            size_hint_y: None
+            height: 80
+            spacing: 10
+            padding: 10
+
+            Button:
+                background_normal: ''
+                background_color: 1, 0, 0, 1  # red
+                on_release: canvasWidget.set_color(1, 0, 0)
+
+            Button:
+                background_normal: ''
+                background_color: 0, 1, 0, 1  # green
+                on_release: canvasWidget.set_color(0, 1, 0)
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 1, 1  # blue
+                on_release: canvasWidget.set_color(0, 0, 1)
+
+            Button:
+                background_normal: ''
+                background_color: 1, 1, 0, 1  # yellow
+                on_release: canvasWidget.set_color(1, 1, 0)
+
+            Button:
+                background_normal: ''
+                background_color: 1, 1, 1, 1  # white
+                on_release: canvasWidget.set_color(1, 1, 1)
+
+            Button:
+                text: "Undo"
+                font_size: 20
+                on_release: canvasWidget.undo_last()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 100
+            spacing: 20
+            padding: 10
+
+            Button:
+                text: "Clear"
+                font_size: 30
+                on_release: canvasWidget.clear_canvas()
+
+            Button:
+                text: "Back"
+                font_size: 30
+                on_release: app.root.current = 'home'
+
+        
