@@ -14,5 +14,5 @@ class PastProjectsScreen(Screen):
             data = json.load(f)
 
         for project in data.get("past", []):
-            card = ProjectCard(project['title'], project['description'])
+            card = ProjectCard(project['title'], project['description'], 'past')
             self.ids.past_project_list.add_widget(card)

@@ -11,15 +11,16 @@
             height: self.texture_size[1] + 20
 
         ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
             GridLayout:
                 id: current_project_list
                 cols: 1
                 spacing: 20
                 size_hint_y: None
                 height: self.minimum_height
-                padding: 10
-                row_default_height: 100
-                row_force_default: True
+                padding: [10, 10]
 
         Button:
             text: "Back"

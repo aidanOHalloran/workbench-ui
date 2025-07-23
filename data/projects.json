@@ -1,12 +1,12 @@
 {
   "current": [
     {
-      "title": "Workbench Touchscreen System",
-      "description": "Build out this Kivy-based touchscreen info panel for my workbench."
-    },
-    {
       "title": "Garage Pulley System",
       "description": "Install ceiling mounted pulley system."
+    },
+    {
+      "title": "Workshop Information System",
+      "description": "This info system for my workshop."
     }
   ],
   "planned": [

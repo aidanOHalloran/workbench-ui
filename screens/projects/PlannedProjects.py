@@ -14,5 +14,5 @@ class PlannedProjectsScreen(Screen):
             data = json.load(f)
 
         for project in data.get("planned", []):
-            card = ProjectCard(project['title'], project['description'])
+            card = ProjectCard(project['title'], project['description'], 'planned')
             self.ids.planned_project_list.add_widget(card)
