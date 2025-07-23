@@ -4,24 +4,24 @@
         padding: 40
         spacing: 30
 
-        BoxLayout:
-            orientation: 'horizontal'
+        FloatLayout:
             size_hint_y: None
-            height: 60
-            spacing: 20
+            height: 80
 
             Label:
-                text: "My Projects"
+                text: "[u]My Projects[/u]"
+                markup: True
                 font_size: 60
-                size_hint_x: 1
-                size_hint_y: None
-                height: self.texture_size[1] + 20
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
             Button:
                 text: "Add Project"
                 font_size: 30
-                size_hint_x: None
-                width: 180
+                size_hint: None, None
+                size: 180, 60
+                pos_hint: {"right": 0.98, "center_y": 0.5}
                 on_release: app.root.current = 'addProjectPage'
 
         Button:
