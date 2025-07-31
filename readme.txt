@@ -6,11 +6,10 @@ This file explains how the Kivy framework components work together to create a t
 | USER INTERACTION FLOW BETWEEN LAYERS |
 ========================================
 
-This section explains how your app connects:
+This section explains how the app connects:
 - Touchscreen UI (KV files)
 - Logic containers (Screen classes)
 - Backend logic and API/cache handling (Controller)
-
 
 
 ===================
@@ -19,7 +18,7 @@ This section explains how your app connects:
 
 1. Screens (ScreenManager and Screen classes)
 
-Manage multiple pages (or views) within your app.
+Manage multiple pages (or views) within the app.
 
 Allow seamless transitions between parts of the UI (e.g., Home, Projects, Weather, etc.).
 
@@ -168,7 +167,7 @@ hourly_data = self.controller.get_hourly_forecast(loc_key)
 ***********************************************************
 ***********************************************************
 
-→ This reuses your AccuWeather API controller with caching.
+→ This reuses the AccuWeather API controller with caching.
 
 
 4. The screen dynamically populates a GridLayout with WeatherCard widgets:
@@ -218,7 +217,7 @@ for hour in hourly_data:
 | HOW TO CONNECT THE CONTROLLER |
 ================================
 
-In your main app (e.g. `main.py`), you must connect the controller to each screen:
+In the main app (e.g. `main.py`), you must connect the controller to each screen:
 
 
 from screens.weather_menu import WeatherMenuScreen
