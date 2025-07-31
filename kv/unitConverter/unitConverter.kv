@@ -8,6 +8,59 @@
             text: "[u]Unit Converter[/u]"
             markup: True
             font_size: 80
-            bold: True
             size_hint_y: None
             height: self.texture_size[1] + 20
+
+        Spinner:
+            id: measurement_type_spinner
+            text: "Select Measurement Type"
+            values: ["length", "volume", "time"]
+            font_size: 45
+            on_text: root.on_measurement_type_change(self, self.text)
+            size_hint_y: None
+            height: 60
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 10
+            size_hint_y: None
+            height: 60
+
+            Spinner:
+                id: from_unit
+                text: "From Unit"
+                font_size: 35
+                values: root.unit_options
+
+            TextInput:
+                id: unit_input
+                hint_text: "Enter value"
+                font_size: 35
+                multiline: False
+
+            Spinner:
+                id: to_unit
+                text: "To Unit"
+                font_size: 35
+                values: root.unit_options
+
+        Button:
+            text: "Convert"
+            font_size: 40
+            size_hint_y: None
+            height: 60
+            on_release: root.handle_conversion()
+
+        Label:
+            id: result_label
+            text: "Result will appear here"
+            font_size: 40
+            size_hint_y: None
+            height: 60
+
+        Button:
+            text: "Back"
+            font_size: 40
+            size_hint_y: None
+            height: 60
+            on_release: app.root.current = 'home'

@@ -26,10 +26,14 @@ from screens.weather.WeatherMenu import WeatherMenuScreen
 from screens.weather.TodaysForecast import TodaysForecastScreen
 from screens.weather.FiveDayForecast import FiveDayForecastScreen
 
+# UNIT CONVERTER IMPORTS
+from screens.unitConverter.UnitConverter import UnitConverterScreen
+
 # CONTROLLER IMPORTS
 from controllers import ProjectController
 from controllers import KeyboardController
 from controllers.WeatherController import WeatherController
+from controllers.UnitConverterController import UnitConverterController
 from controllers.KeyboardController import TouchInput
 from kivy.factory import Factory
 Factory.register('TouchInput', cls=TouchInput)
@@ -53,6 +57,7 @@ class WorkbenchApp(App):
     def build(self):
         self.projectController = ProjectController.ProjectController(self) # create instance of ProjectController
         self.keyboardController = KeyboardController.KeyboardController(self) # create instance of KeyboardController
+        self.unitConverterController = UnitConverterController(self) # create instance of UnitConverterController
 
         load_dotenv()  # Load environment variables from .env file
         weatherKey = os.getenv('WEATHER_KEY')
@@ -76,6 +81,9 @@ class WorkbenchApp(App):
         Builder.load_file('kv/weather/weatherMenu.kv')
         Builder.load_file('kv/weather/todaysForecast.kv')
         Builder.load_file('kv/weather/fiveDayForecast.kv')
+        
+        # Load .kv file for unit converter screen
+        Builder.load_file('kv/unitConverter/unitConverter.kv')
 
 
         sm = ScreenManager()
@@ -90,6 +98,11 @@ class WorkbenchApp(App):
 
         # WHITEBOARD SCREEN
         sm.add_widget(WhiteboardScreen(name='whiteboard'))
+
+        # UNIT CONVERTER SCREEN
+        unit_converter_screen = UnitConverterScreen(name='unitConverter')
+        unit_converter_screen.controller = self.unitConverterController
+        sm.add_widget(unit_converter_screen)
 
         # WEATHER SCREENS
         # Create weather screens and inject controller
@@ -111,6 +124,7 @@ class WorkbenchApp(App):
         self.projectController.root = sm
         self.keyboardController.root = sm
         self.weatherController.root = sm
+        self.unitConverterController.root = sm
 
         return sm
 
