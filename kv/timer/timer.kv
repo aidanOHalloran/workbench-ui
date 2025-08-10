@@ -1,0 +1,85 @@
+<TimerScreen>:
+    time_display: time_display
+    hours_input: hours_input
+    minutes_input: minutes_input
+    seconds_input: seconds_input
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        
+        BoxLayout:
+            size_hint_y: 0.2
+                
+            Label:
+                text: "Countdown Timer"
+                font_size: '24sp'
+        
+        Label:
+            id: time_display
+            text: "00:00:00"
+            font_size: '60sp'
+            size_hint_y: 0.3
+        
+        BoxLayout:
+            size_hint_y: 0.2
+            spacing: 10
+            
+            Label:
+                text: "Hours:"
+                size_hint_x: 0.3
+            
+            TextInput:
+                id: hours_input
+                multiline: False
+                input_filter: 'int'
+                text: "0"
+                size_hint_x: 0.7
+            
+            Label:
+                text: "Minutes:"
+                size_hint_x: 0.3
+            
+            TextInput:
+                id: minutes_input
+                multiline: False
+                input_filter: 'int'
+                text: "0"
+                size_hint_x: 0.7
+            
+            Label:
+                text: "Seconds:"
+                size_hint_x: 0.3
+            
+            TextInput:
+                id: seconds_input
+                multiline: False
+                input_filter: 'int'
+                text: "0"
+                size_hint_x: 0.7
+            
+        BoxLayout:
+            size_hint_y: 0.3
+            spacing: 10
+            padding: [20, 0]
+            
+            Button:
+                text: "Start"
+                on_release: root.start()
+                
+            Button:
+                text: "Stop"
+                on_release: root.stop()
+                
+            Button:
+                text: "Reset"
+                on_release: root.reset()
+
+        Button:
+            text: "Back"
+            font_size: 40
+            size_hint_y: None
+            height: 60
+            on_release:
+                app.root.current = 'timerMenu'

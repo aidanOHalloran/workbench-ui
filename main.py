@@ -17,26 +17,33 @@ from screens.projects.CurrentProjects import CurrentProjectsScreen
 from screens.projects.PlannedProjects import PlannedProjectsScreen
 from screens.projects.PastProjects import PastProjectsScreen
 from screens.projects.AddProject import AddProjectScreen
-
 # WHITEBOARD IMPORTS
 from screens.whiteboard.Whiteboard import WhiteboardScreen
-
 # WEATHER IMPORTS
 from screens.weather.WeatherMenu import WeatherMenuScreen
 from screens.weather.TodaysForecast import TodaysForecastScreen
 from screens.weather.FiveDayForecast import FiveDayForecastScreen
-
 # UNIT CONVERTER IMPORTS
 from screens.unitConverter.UnitConverter import UnitConverterScreen
+# TIMER IMPORTS
+from screens.timer.TimerMenu import TimerMenuScreen
+from screens.timer.Timer import TimerScreen
+from screens.timer.Stopwatch import StopwatchScreen
 
 # CONTROLLER IMPORTS
 from controllers import ProjectController
 from controllers import KeyboardController
 from controllers.WeatherController import WeatherController
 from controllers.UnitConverterController import UnitConverterController
-from controllers.KeyboardController import TouchInput
+from controllers.TimerController import TimerController
+
+# use factory to register components/widgets
 from kivy.factory import Factory
+from controllers.KeyboardController import TouchInput
 Factory.register('TouchInput', cls=TouchInput)
+
+from screens.widgets.numberPad import NumberPad
+Factory.register('NumberPad', cls=NumberPad)
 
 class WorkbenchApp(App):
     # Here set functions for different controller actions
@@ -58,6 +65,7 @@ class WorkbenchApp(App):
         self.projectController = ProjectController.ProjectController(self) # create instance of ProjectController
         self.keyboardController = KeyboardController.KeyboardController(self) # create instance of KeyboardController
         self.unitConverterController = UnitConverterController(self) # create instance of UnitConverterController
+        self.timerController = TimerController(self) # create instance of TimerController
 
         load_dotenv()  # Load environment variables from .env file
         weatherKey = os.getenv('WEATHER_KEY')
@@ -84,6 +92,11 @@ class WorkbenchApp(App):
         
         # Load .kv file for unit converter screen
         Builder.load_file('kv/unitConverter/unitConverter.kv')
+        
+        # Load .kv files for timer screens
+        Builder.load_file('kv/timer/timerMenu.kv')
+        Builder.load_file('kv/timer/timer.kv')
+        Builder.load_file('kv/timer/stopwatch.kv')
 
 
         sm = ScreenManager()
@@ -119,12 +132,25 @@ class WorkbenchApp(App):
         sm.add_widget(weather_menu)
         sm.add_widget(today_screen)
         sm.add_widget(week_screen)
+        
+        # TIMER SCREENS
+        timer_menu = TimerMenuScreen(name='timerMenu')
+        timer_screen = TimerScreen(name='timer')
+        stopwatch_screen = StopwatchScreen(name='stopwatch')
+
+        # Add timer screens to ScreenManager
+        sm.add_widget(timer_menu)
+        sm.add_widget(timer_screen)
+        sm.add_widget(stopwatch_screen)
 
         # Set root for controllers so they can access screens
         self.projectController.root = sm
         self.keyboardController.root = sm
         self.weatherController.root = sm
         self.unitConverterController.root = sm
+        self.timerController.root = sm
+
+        sm.timerController = self.timerController
 
         return sm
 

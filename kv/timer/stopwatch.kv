@@ -1,0 +1,45 @@
+<StopwatchScreen>:
+    time_display: time_display
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        
+        BoxLayout:
+            size_hint_y: 0.2
+                
+            Label:
+                text: "Stopwatch"
+                font_size: '24sp'
+        
+        Label:
+            id: time_display
+            text: "00:00:00"
+            font_size: '80sp'
+            size_hint_y: 0.5
+            
+        BoxLayout:
+            size_hint_y: 0.3
+            spacing: 10
+            padding: [20, 0]
+            
+            Button:
+                text: "Start"
+                on_release: root.start()
+                
+            Button:
+                text: "Stop"
+                on_release: root.stop()
+                
+            Button:
+                text: "Reset"
+                on_release: root.reset()
+
+        Button:
+            text: "Back"
+            font_size: 40
+            size_hint_y: None
+            height: 60
+            on_release:
+                app.root.current = 'timerMenu'

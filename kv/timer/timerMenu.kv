@@ -1,0 +1,41 @@
+<TimerMenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        
+        BoxLayout:
+            size_hint_y: 0.2
+                
+            Label:
+                text: "Timer & Stopwatch"
+                font_size: '24sp'
+        
+        Label:
+            text: "Select an option"
+            size_hint_y: 0.1
+        
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 20
+            padding: [40, 20]
+            
+            Button:
+                text: "Countdown Timer"
+                font_size: '20sp'
+                size_hint_y: 0.4
+                on_release: app.root.current = 'timer'
+                
+            Button:
+                text: "Stopwatch"
+                font_size: '20sp'
+                size_hint_y: 0.4
+                on_release: app.root.current = 'stopwatch'
+
+            Button:
+                text: "Back"
+                font_size: 40
+                size_hint_y: None
+                height: 60
+                on_release:
+                    app.root.current = 'home'

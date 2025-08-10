@@ -13,7 +13,7 @@ class TodaysForecastScreen(Screen):
         self.ids.hourly_forecast_container.clear_widgets()
 
         load_dotenv()
-        city_name = os.getenv("LOCATION", "Mobile, AL")
+        city_name = os.getenv("LOCATION", "Huntsville, AL")
 
         self.location_label = f"Today's Forecast for {city_name}"
 

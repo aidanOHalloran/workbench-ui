@@ -1,52 +1,75 @@
 <UnitConverterScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: 50
-        spacing: 40
+        padding: 40
+        spacing: 30
 
         Label:
             text: "[u]Unit Converter[/u]"
             markup: True
-            font_size: 80
+            font_size: 60
             size_hint_y: None
-            height: self.texture_size[1] + 20
+            height: self.texture_size[1] + 30
+            halign: "center"
+            valign: "middle"
 
         Spinner:
             id: measurement_type_spinner
             text: "Select Measurement Type"
             values: ["length", "volume", "time"]
-            font_size: 45
-            on_text: root.on_measurement_type_change(self, self.text)
+            font_size: 32
             size_hint_y: None
             height: 60
+            on_text: root.on_measurement_type_change(self, self.text)
 
         BoxLayout:
             orientation: 'horizontal'
-            spacing: 10
+            spacing: 20
             size_hint_y: None
-            height: 60
+            height: 80
 
             Spinner:
                 id: from_unit
                 text: "From Unit"
-                font_size: 35
+                font_size: 28
+                size_hint_x: 0.4
                 values: root.unit_options
-
-            TextInput:
-                id: unit_input
-                hint_text: "Enter value"
-                font_size: 35
-                multiline: False
 
             Spinner:
                 id: to_unit
                 text: "To Unit"
-                font_size: 35
+                font_size: 28
+                size_hint_x: 0.4
                 values: root.unit_options
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 20
+            size_hint_y: 1
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 10
+                size_hint_x: 1
+
+                Label:
+                    text: "Enter Value"
+                    font_size: 24
+                    size_hint_y: None
+                    height: 30
+                    halign: "left"
+
+                Widget:
+
+                NumberPad:
+                    id: unit_input
+                    size_hint_y: 1
+
+                Widget:
 
         Button:
             text: "Convert"
-            font_size: 40
+            font_size: 32
             size_hint_y: None
             height: 60
             on_release: root.handle_conversion()
@@ -54,13 +77,14 @@
         Label:
             id: result_label
             text: "Result will appear here"
-            font_size: 40
+            font_size: 32
             size_hint_y: None
             height: 60
+            color: 0.2, 0.6, 0.2, 1  # Optional green accent
 
         Button:
             text: "Back"
-            font_size: 40
+            font_size: 30
             size_hint_y: None
             height: 60
             on_release: app.root.current = 'home'

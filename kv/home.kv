@@ -25,11 +25,11 @@
                 row_force_default: True
 
                 Button:
-                    text: "View Projects"
+                    text: "Projects"
                     font_size: 45
                     on_release: app.root.current = 'projects'
                 Button:
-                    text: "View Weather Forecast"
+                    text: "Weather Forecast"
                     font_size: 45
                     on_release: app.root.current = 'weatherMenu'
                 Button:
@@ -45,7 +45,7 @@
                     font_size: 45
                     on_release: app.root.current = 'unitConverter'
                 Button:
-                    text: "For Fun"
+                    text: "Timer / Stopwatch"
                     font_size: 45
-                    on_release: print('Selected: For Fun')
+                    on_release: app.root.current = 'timerMenu'
                 # Add more buttons here — it will scroll!
